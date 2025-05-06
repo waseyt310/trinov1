@@ -102,10 +102,16 @@ GET /api/tables?catalog=example_catalog&schema=example_schema
 This application is designed to be deployable to GitHub Pages. Follow these steps:
 
 1. Push your code to GitHub repository: https://github.com/waseyt310/trinov1
-2. Configure GitHub Pages in the repository settings to use the main branch
-3. GitHub Actions will build and deploy the frontend
+2. Configure GitHub Pages in the repository settings:
+   - Go to Settings > Pages
+   - Source: GitHub Actions
+3. The GitHub Actions workflow will automatically build and deploy the frontend
 
 Note: Since GitHub Pages only hosts static files, the backend will need to be hosted separately.
+To use the application with a live backend:
+
+1. Deploy the backend to a hosting service that supports Python/Flask
+2. Update the `production.API_BASE_URL` in `frontend/config.js` to point to your backend API
 
 ## Configuration
 

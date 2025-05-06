@@ -1,5 +1,5 @@
-// Configuration
-const API_BASE_URL = 'http://localhost:5000/api'; // Change this in production
+// Get configuration from the config file
+const API_BASE_URL = config.get().API_BASE_URL;
 
 // State management
 let currentState = {
@@ -295,3 +295,39 @@ window.addEventListener('resize', handleResponsiveLayout);
 // Initialize responsive layout
 handleResponsiveLayout();
 
+// Display a message if we're in production mode but can't connect to backend
+document.addEventListener('DOMContentLoaded', () => {
+    // Check if we're in production (GitHub Pages)
+    if (window.location.hostname.includes('github.io')) {
+        // Add a note at the top of the page
+        const statusBar = document.querySelector('.status-bar');
+        const noteElement = document.createElement('div');
+        noteElement.className = 'backend-note';
+        noteElement.innerHTML = `
+            <p>
+                <strong>Note:</strong> This is a static frontend demo hosted on GitHub Pages.
+                For full functionality, you need to set up the backend API separately.
+                See the <a href="https://github.com/waseyt310/trinov1" target="_blank">GitHub repository</a> for instructions.
+            </p>
+        `;
+        statusBar.parentNode.insertBefore(noteElement, statusBar);
+        
+        // Add the CSS for the note
+        const style = document.createElement('style');
+        style.textContent = `
+            .backend-note {
+                background-color: #fff3cd;
+                color: #856404;
+                padding: 12px 15px;
+                margin: 20px 0 0 0;
+                border-radius: 4px;
+                border-left: 4px solid #ffeeba;
+            }
+            .backend-note a {
+                color: #0056b3;
+                text-decoration: underline;
+            }
+        `;
+        document.head.appendChild(style);
+    }
+});
