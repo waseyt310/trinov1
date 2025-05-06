@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trino Database Explorer</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><i class="fas fa-database"></i> Trino Database Explorer</h1>
+            <p>Browse catalogs, schemas, and tables in your Trino database</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="status-bar">
+            <div id="connection-status">
+                <span class="status-dot"></span>
+                <span class="status-text">Checking connection...</span>
+            </div>
+        </div>
+
+        <div class="explorer">
+            <div class="explorer-sidebar">
+                <div class="explorer-section">
+                    <h2><i class="fas fa-server"></i> Catalogs</h2>
+                    <div id="catalogs-list" class="tree-view">
+                        <div class="loading-spinner"><i class="fas fa-spinner fa-spin"></i> Loading catalogs...</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="explorer-content">
+                <div class="content-header">
+                    <h2 id="content-title">Select a catalog, schema, or table</h2>
+                    <div class="breadcrumbs" id="breadcrumbs">
+                        <span>Home</span>
+                    </div>
+                </div>
+
+                <div class="content-body">
+                    <div id="welcome-message" class="welcome-message">
+                        <i class="fas fa-database fa-3x"></i>
+                        <h3>Welcome to Trino Database Explorer</h3>
+                        <p>Select a catalog from the sidebar to begin exploring your Trino database.</p>
+                    </div>
+
+                    <div id="schemas-container" class="data-container" style="display: none;">
+                        <h3>Schemas</h3>
+                        <div id="schemas-list" class="data-list">
+                            <div class="loading-spinner"><i class="fas fa-spinner fa-spin"></i> Loading schemas...</div>
+                        </div>
+                    </div>
+
+                    <div id="tables-container" class="data-container" style="display: none;">
+                        <h3>Tables</h3>
+                        <div id="tables-list" class="data-list">
+                            <div class="loading-spinner"><i class="fas fa-spinner fa-spin"></i> Loading tables...</div>
+                        </div>
+                    </div>
+
+                    <div id="error-container" class="error-container" style="display: none;">
+                        <i class="fas fa-exclamation-triangle fa-2x"></i>
+                        <h3>Error</h3>
+                        <p id="error-message"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Trino Database Explorer</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
+
